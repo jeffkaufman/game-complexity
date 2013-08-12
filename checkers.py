@@ -37,6 +37,18 @@ def adjacent(x, y, distance):
             if valid(xv,yv)]
   return h(1) + (h(-1) if king(x,y) else [])
 
+def exists_jump(color):
+  for xs in range(8):
+    for ys in range(8):
+      if color_at(xs, ys) == color:
+        for xe, ye in adjacent(xs, ys, 2):
+          if empty(xe, ye):
+            jumped_over_x = (xs+xe)/2
+            jumped_over_y = (ys+ye)/2
+            if color_at(jumped_over_x, jumped_over_y) not in [color, '.']:
+              return True
+  return False
+
 def apply_move(color, x_start, y_start, x_end, y_end, x_jumped_to, y_jumped_to):
   def actually_apply_move():
     board[x_end][y_end] = board[x_start][y_start]
@@ -64,6 +76,8 @@ def apply_move(color, x_start, y_start, x_end, y_end, x_jumped_to, y_jumped_to):
   if (x_end, y_end) in adjacent(x_start, y_start, 1):
     if x_jumped_to != None:
       return "continuing after a jump without another jump"
+    if exists_jump(color):
+      return "must take jump"
     actually_apply_move()
     return "single"
   if (x_end, y_end) in adjacent(x_start, y_start, 2):
@@ -81,7 +95,7 @@ def turn(color):
   while True:
     print_board()
     choice = raw_input(color + " > ")
-    if jumped_to[0] != None and choice == "pass":
+    if jumped_to[0] != None and choice == "pass" and not exists_jump(color):
       break
     if choice == "resign":
       raise Exception(color + " resigned and loses")
