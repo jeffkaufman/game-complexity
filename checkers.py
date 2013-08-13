@@ -13,7 +13,7 @@ def valid(x, y):
 
 def print_board():
   for row in board:
-    print row
+    print "".join(row)
 
 def color_at(x, y):
   return board[x][y].lower()
