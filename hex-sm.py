@@ -1,4 +1,4 @@
-b,m=[],[0]
+b=[]
 for x in range(10):
  b.append([])
  for y in range(10):b[-1].append(' ')
@@ -24,9 +24,7 @@ def t(C):
   except ValueError:continue
   if not v(x,y) or b[x][y] != ' ':continue
   b[x][y]=C
-  m[0]+=1
   if w(x,y,C):raise Exception(C)
-  if m[0]==100:raise Exception('draw')
   break
 while 1:t('b'),t('w')
 

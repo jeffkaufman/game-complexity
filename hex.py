@@ -15,7 +15,6 @@
 import sys
 SIZE = 10
 board = []
-moves = [0]
 for x in range(SIZE):
   board.append([])
   for y in range(SIZE):
@@ -78,12 +77,10 @@ def turn(color):
       print "position not empty, try again"
       continue
     board[x][y] = color
-    moves[0] += 1
     if winner(x, y, color):
       print_board()
       raise Exception(color + " wins")
-    if moves[0] == SIZE*SIZE:
-      raise Exception("board filled: draw")
+    # no need to check if the board is full, because the game can't end in a tie
     break
     
 def game():
