@@ -13,7 +13,7 @@
 #
 # Adjacencies are up, down, up-right, and down-left.
 import sys
-SIZE = 2
+SIZE = 10
 board = []
 moves = [0]
 for x in range(SIZE):
@@ -26,9 +26,9 @@ def valid(x, y):
   return 0 <= x < SIZE and 0 <= y < SIZE
 
 def adjacent(x, y):
-  return [(x, y)
-          for (x, y) in [(x+1, y), (x-1, y), (x-1, y+1), (x+1, y-1)]
-          if valid(x,y)]
+  return [(xs, ys)
+          for (xs, ys) in [(x+1, y), (x-1, y), (x-1, y+1), (x+1, y-1)]
+          if valid(xs,ys)]
 
 # Draws the board.  I'm lazy and didn't want to take the time to make it accurate so 
 def print_board():
