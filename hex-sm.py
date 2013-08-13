@@ -17,7 +17,7 @@ def w(x,y,C):
   return r[0] and r[1]
 def t(C):
  while 1:
-  h=raw_input(C+">")
+  h=raw_input(C+'>')
   try:
    x,y=h.split()
    x,y=int(x),int(y)
@@ -26,7 +26,7 @@ def t(C):
   b[x][y]=C
   m[0]+=1
   if w(x,y,C):raise Exception(C)
-  if m[0]==100:raise Exception("draw")
+  if m[0]==100:raise Exception('draw')
   break
 while 1:t('b'),t('w')
 

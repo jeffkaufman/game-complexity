@@ -33,13 +33,13 @@ def m(C, xs, ys, xe, ye, xj, yj):
 def t(C):
  xj,yj=-1,-1
  while 1:
-  h = raw_input(C+">")
-  if xj!=-1 and h=="p" and not e(C):break
-  if h == "r":raise Exception(color + " L")
+  h = raw_input(C+'>')
+  if xj!=-1 and h=='p' and not e(C):break
+  if h == 'r':raise Exception(color + ' L')
   try:xs,ys,xe,ye=[int(i) for i in h.split()]
   except ValueError:continue
   R=m(C,xs,ys,xe,ye,xj,yj)
   if R==2:xj,yj=xe,ye
   if R==1:break
-while 1:t("b"),t("w")
+while 1:t('b'),t('w')
 

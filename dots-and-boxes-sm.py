@@ -1,7 +1,7 @@
 b,S=[],{'w':0,'b':0}
 for x in range(62):
  b.append([])
- for y in range(62):b[-1].append(" ")
+ for y in range(62):b[-1].append(' ')
 def v(x,y):return 0<=x<30 and 0<=y<30
 def m(C,xs,ys,xe,ye):
  if not v(xs,ys) or not v(xe,ye): return 0
@@ -22,11 +22,11 @@ def s(x,y):
  return 1
 def t(C):
  while 1:
-  if S['w']+S['b']==841:raise Exception("b" if S['b']>S['w'] else ("w" if S['w']>S['b'] else "t"))
-  h=raw_input(C+">")
+  if S['w']+S['b']==841:raise Exception('b' if S['b']>S['w'] else ('w' if S['w']>S['b'] else 't'))
+  h=raw_input(C+'>')
   try:xs,ys,xe,ye=[int(i) for i in h.split()]
   except ValueError:continue
   r=m(C,xs,ys,xe,ye)
   if r==2:continue
   if r==1:break
-while 1:t("w"),t("b")
+while 1:t('w'),t('b')

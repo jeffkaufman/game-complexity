@@ -34,11 +34,11 @@ def cc(C):
  for x in range(19):
   for y in range(19):
    if b[x][y]==C:
-    if not r(x,y," "):c(x,y)
+    if not r(x,y,' '):c(x,y)
 def t(C):
  while 1:
-  n=raw_input(C+">")
-  if n=="p":return 0
+  n=raw_input(C+'>')
+  if n=='p':return 0
   try:
    x,y=n.split()
    x,y=int(x),int(y)
@@ -51,7 +51,7 @@ def t(C):
  b[x][y]=C
  cc('b' if C=='w' else 'w')
  cc(C)
- if b in p:raise Exception("r")
+ if b in p:raise Exception('r')
  return 1
 mb,mw=1,1
 while mb or mw:
@@ -60,7 +60,7 @@ while mb or mw:
 ss={' ':0,'b':0,'w':0}
 for x in range(19):
  for y in range(19):ss[sf(x,y)]+=1
-if ss['b']==ss['w']:print "t"
-elif ss['b']>ss['w']:print "b"
-else:print "w"
+if ss['b']==ss['w']:print 't'
+elif ss['b']>ss['w']:print 'b'
+else:print 'w'
 
