@@ -1,6 +1,6 @@
 board = []
 scores = {'w':0,'b':0}
-SIZE=2
+SIZE=30
 for x in range(SIZE*2+2):
   board.append([])
   for y in range(SIZE*2+2):
