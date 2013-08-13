@@ -5,8 +5,6 @@ for x in range(62):
 def v(x,y):return 0<=x<30 and 0<=y<30
 def m(C,xs,ys,xe,ye):
  if not v(xs,ys) or not v(xe,ye): return 0
- if xs>xe:xs,xe=xe,xs
- if ys>ye:ys,ye=ye,ys
  if xs==xe and ye==ys+1:bx,by,ch=2*xs,2*ys+1,'-'
  elif ys==ye and xe==xs+1:bx,by,ch=2*xs+1,2*ys,'|'
  else:return 0
