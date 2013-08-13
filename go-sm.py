@@ -51,8 +51,7 @@ def t(C):
  b[x][y]=C
  cc('b' if C=='w' else 'w')
  cc(C)
- for P in p:
-  if P==b:raise Exception("r")
+ if b in p:raise Exception("r")
  return 1
 mb,mw=1,1
 while mb or mw:

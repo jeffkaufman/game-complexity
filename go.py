@@ -19,7 +19,7 @@ def save_board():
 
 def print_board():
   for row in board:
-    print row
+    print "".join(row)
 
 def reach(x, y, target):
   color = board[x][y]
@@ -84,10 +84,7 @@ def check_clearing(color):
           clear(x, y)
 
 def repeat_board():
-  for past_board in past_boards:
-    if past_board == board:
-      return True
-  return False
+  return board in past_boards
 
 def turn(color):
   print_board()
