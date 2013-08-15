@@ -1,9 +1,7 @@
-b,p=[],[]
-for x in range(19):
- b.append([])
- for y in range(19):b[-1].append(' ')
+b,p=[[' ']*19 for x in range(19)],set()
 def v(x,y):return 0<=x<19 and 0<=y<19
 def j(x,y):return [(xv,yv) for xv,yv in [(x-1,y),(x+1,y),(x,y-1),(x,y+1)] if v(xv,yv)]
+def z():return tuple(map(tuple,b))
 def r(x,y,t):
  C,V=b[x][y],set()
  def h(xh,yh):
@@ -23,18 +21,15 @@ def sf(x,y):
  if r_b:return 'b'
  if r_w:return 'w'
  return ' '
-def c(x,y):
- C = b[x][y]
- def h(xh,yh):
-  if b[xh][yh]!= C:return
-  b[xh][yh]=' '
-  for xv,yv in j(xh,yh):h(xv,yv)
- h(x,y)
+def c(x,y,C):
+ if b[x][y]!=C:return
+ b[x][y]=' '
+ for xv,yv in j(x,y):c(x,y)
 def cc(C):
  for x in range(19):
   for y in range(19):
    if b[x][y]==C:
-    if not r(x,y,' '):c(x,y)
+    if not r(x,y,' '):c(x,y,C)
 def t(C):
  while 1:
   n=raw_input(C+'>')
@@ -46,12 +41,11 @@ def t(C):
   if not v(x,y):continue
   if b[x][y]!=' ':continue
   break
- p.append([])
- for R in b:p[-1].append(R[:])
+ p.add(z())
  b[x][y]=C
  cc('b' if C=='w' else 'w')
  cc(C)
- if b in p:raise Exception('r')
+ if z() in p:raise Exception('r')
  return 1
 mb,mw=1,1
 while mb or mw:
