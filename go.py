@@ -139,12 +139,11 @@ def turn(color):
 # Alternate turns until both players pass, then score the game and
 # declare a winner.
 def game():
-  b_passed = False
-  w_passed = False
-  while not b_passed or not w_passed:
-    b_passed = turn('b')
-    if not b_passed or not w_passed:
-      w_passed = turn('w')
+  player = 'b'
+  passes = {'b': False, 'w': False}
+  while not all(passes.values()):
+    passes[player] = turn(player)
+    player = opponent(player)
   score()
 
 game()
