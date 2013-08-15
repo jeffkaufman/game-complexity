@@ -1,11 +1,6 @@
 # The board is a 19x19 list of lists.  Each element can be a character,
 # 'b', 'w', or ' ' for "black", "white", and "empty".
-board = []
-for x in range (19):
-  board.append([])
-  for y in range(19):
-    board[-1].append(' ')
-past_boards = []
+board = [[' '] * 19 for x in range(19)]
 
 # Check if a point is on the board.
 def valid(x, y):
