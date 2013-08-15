@@ -12,12 +12,20 @@ def adjacent(x, y):
           for xv, yv in [(x-1, y), (x+1, y), (x, y-1), (x, y+1)]
           if valid(xv, yv)]
 
+past_boards = set()
+
+# Make an immutable, hashable representation of a board.
+def freeze_board():
+  return tuple(map(tuple, board))
+
 # Add a board to the list of past board we use for checking that we've
 # not got stuck in a loop.
 def save_board():
-  past_boards.append([])
-  for row in board:
-    past_boards[-1].append(row[:])
+  past_boards.add(freeze_board())
+
+# Have we been here before?
+def repeat_board():
+  return freeze_board() in past_boards
 
 def print_board():
   for row in board:
@@ -81,15 +89,12 @@ def score():
     print "w wins"
 
 # Remove point x,y and the rest of its same-color group.
-def clear(x, y):
-  color = board[x][y]
-  def helper(xh, yh):
-    if board[xh][yh] != color:
-      return
-    board[xh][yh] = ' '
-    for xv, yv in adjacent(xh, yh):
-      helper(xv, yv)
-  helper(x, y)
+def clear(x, y, color):
+  if board[x][y] != color:
+    return
+  board[x][y] = ' '
+  for xv, yv in adjacent(x, y):
+    clear(xv, yv, color)
 
 def opponent(color):
   return 'b' if color == 'w' else 'w'
@@ -101,11 +106,7 @@ def check_clearing(color):
     for y in range(19):
       if board[x][y] == color:
         if not reach(x, y, " "):
-          clear(x, y)
-
-# Have we been here before?
-def repeat_board():
-  return board in past_boards
+          clear(x, y, color)
 
 # Ask the user to choose a place to play, update the board for their
 # choice, return True if they passed.
