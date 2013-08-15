@@ -68,7 +68,7 @@ def exists_jump(color):
 # good and normal, and an error string otherwise.
 def apply_move(color, x_start, y_start, x_end, y_end, x_jumped_to, y_jumped_to):
   def actually_apply_move():
-    # The move is legitamate, and we need to update the board.  Deals
+    # The move is legitimate, and we need to update the board.  Deals
     # with kinging.
     board[x_end][y_end] = board[x_start][y_start]
     board[x_start][y_start] = '.'
