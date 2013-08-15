@@ -51,9 +51,7 @@ def reach(x, y, target):
     if board[xh][yh] == target:
       return True
     if board[xh][yh] == color:
-      for xv, yv in adjacent(xh, yh):
-        if helper(xv, yv):
-          return True
+      return any(helper(xv, yv) for xv, yv in adjacent(xh, yh))
     return False
   return helper(x, y)
 
@@ -117,9 +115,8 @@ def turn(color):
     choice = raw_input(color + " > ")
     if choice == "pass":
       return True
-    try:    
-      x_s, y_s = choice.strip().split()
-      x, y = int(x_s), int(y_s)
+    try:
+      x, y = map(int, choice.strip().split())
     except ValueError:
       print "give x and y coordinates separated by a space: 0 3"
       print "or write pass"
