@@ -1,7 +1,4 @@
-b=[]
-for x in range(10):
- b.append([])
- for y in range(10):b[-1].append(' ')
+b=[' '*10 for x in range(10)]
 def v(x,y):return 0<=x<10 and 0<=y<10
 def w(x,y,C):
  R,V=[0,0],set()

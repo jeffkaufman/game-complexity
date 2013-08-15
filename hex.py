@@ -14,11 +14,7 @@
 # Adjacencies are up, down, up-right, and down-left.
 import sys
 SIZE = 10
-board = []
-for x in range(SIZE):
-  board.append([])
-  for y in range(SIZE):
-    board[-1].append(' ')
+board = [' '*SIZE for x in range(SIZE)]
 
 # Is this point on the board?
 def valid(x, y):
