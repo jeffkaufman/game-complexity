@@ -1,7 +1,4 @@
-b,S=[],{'w':0,'b':0}
-for x in range(62):
- b.append([])
- for y in range(62):b[-1].append(' ')
+b,S=[[' ']*62 for x in range(62)]],{'w':0,'b':0}
 def v(x,y):return 0<=x<30 and 0<=y<30
 def m(C,xs,ys,xe,ye):
  if not v(xs,ys) or not v(xe,ye): return 0

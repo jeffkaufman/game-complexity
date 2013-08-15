@@ -4,13 +4,9 @@
 #   - - 
 #  |b|w|
 #   - - 
-board = []
 scores = {'w':0,'b':0}
 SIZE=30 # number of dots available to connect into boxes
-for x in range(SIZE*2+2):
-  board.append([])
-  for y in range(SIZE*2+2):
-    board[-1].append(" ")
+board = [[' ']*(SIZE*2+2) for x in range(SIZE*2+2)]
 
 def print_board():
   for row in board:
