@@ -12,13 +12,13 @@ def e(C):
     for xe,ye in j(xs,ys,2):
      if c(xe,ye)=='.':
       if c((xs+xe)/2,(ys+ye)/2) not in [C,'.']:return 1
-def m(C, xs, ys, xe, ye, xj, yj):
+def m(C,xs,ys,xe,ye,xj,yj):
  def am():
   b[xe][ye]=b[xs][ys]
   b[xs][ys]='.'
   if C=='w' and xe==7:b[xe][ye]='W'
   if C=='b' and xe==0:b[xe][ye]='B'
- if ((not (v(xs,ys) and v(xe,ye) and c(xs,ys) == C and b[xe][ye]!=' ' and c(xe,ye)=='.')) or (xj!=-1 and (xs!=xj or ys!=yj))):return 0
+ if ((not (v(xs,ys) and v(xe,ye) and c(xs,ys)==C and b[xe][ye]!=' ' and c(xe,ye)=='.')) or (xj!=-1 and (xs!=xj or ys!=yj))):return 0
  if (xe,ye) in j(xs,ys,1):
   if xj!=-1 or e(C):return 0
   am()
@@ -33,9 +33,9 @@ def m(C, xs, ys, xe, ye, xj, yj):
 def t(C):
  xj,yj=-1,-1
  while 1:
-  h = raw_input(C+'>')
+  h=raw_input(C+'>')
   if xj!=-1 and h=='p' and not e(C):break
-  if h == 'r':raise Exception(color + ' L')
+  if h=='r':raise Exception(C+' L')
   try:xs,ys,xe,ye=[int(i) for i in h.split()]
   except ValueError:continue
   R=m(C,xs,ys,xe,ye,xj,yj)
