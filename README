@@ -1,0 +1,9 @@
+See http://www.jefftk.com/p/simplest-interesting-game
+
+If you have ideas for making any of them shorter, please let me know.
+
+$ for x in *-sm.* ; do echo $(cat $x | gzip | wc -c) $x; done | sort -n
+356 hex-sm.py
+483 dots-and-boxes-sm.py
+572 go-sm.py
+622 checkers-sm.py
